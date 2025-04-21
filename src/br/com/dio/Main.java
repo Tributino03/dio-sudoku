@@ -142,6 +142,37 @@ public class Main {
         }
     }
 
+    private static void clearColumn() {
+        if (isNull(board)) {
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+
+        System.out.println("Informe a coluna que será limpa");
+        var col = runUntilGetValidNumber(0, 8);
+
+        for (int row = 0; row < 9; row++) {
+            if (!board.clearValue(col, row)) {
+                System.out.printf("A posição [%d,%d] tem um valor fixo e não foi apagada\n", col, row);
+            }
+        }
+    }
+
+    private static void clearRow() {
+        if (isNull(board)) {
+            System.out.println("O jogo ainda não foi iniciado");
+            return;
+        }
+        System.out.println("Informe a linha que será limpa");
+        var row = runUntilGetValidNumber(0, 8);
+
+        for (int col = 0; col < 9; col++) {
+            if (!board.clearValue(col, row)) {
+                System.out.printf("A posição [%d,%d] tem um valor fixo e não foi apagada\n", col, row);
+            }
+        }
+    }
+
     private static void clearGame() {
         if (isNull(board)){
             System.out.println("O jogo ainda não foi iniciado iniciado");
